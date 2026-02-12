@@ -12,6 +12,12 @@ Others, including the Go `guru` and the test coverage tool, can be fetched with
 Packages include a type-checker for Go and an implementation of the
 Static Single Assignment form (SSA) representation for Go programs.
 
+## Documentation
+
+Additional documentation is available in the [docs](docs/) directory:
+
+- **GDBus Communication** - Understanding Session Bus vs System Bus differences ([English](docs/gdbus-bus-types.md) | [中文](docs/gdbus-bus-types-zh.md))
+
 ## Download/Install
 
 The easiest way to install is to run `go get -u golang.org/x/tools/...`. You can
