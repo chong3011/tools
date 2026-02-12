@@ -16,7 +16,7 @@ import (
 // SessionBusExample demonstrates connecting to and using the session bus
 func SessionBusExample() {
 	fmt.Println("=== Session Bus Example ===")
-	
+
 	// Connect to session bus
 	conn, err := dbus.SessionBus()
 	if err != nil {
@@ -51,14 +51,14 @@ func SessionBusExample() {
 	// Example 2: Send a notification (common session bus use case)
 	obj := conn.Object("org.freedesktop.Notifications", "/org/freedesktop/Notifications")
 	call := obj.Call("org.freedesktop.Notifications.Notify", 0,
-		"ExampleApp",           // app_name
-		uint32(0),              // replaces_id
-		"",                     // app_icon
-		"Session Bus Example",  // summary
+		"ExampleApp",          // app_name
+		uint32(0),             // replaces_id
+		"",                    // app_icon
+		"Session Bus Example", // summary
 		"This notification was sent via the session bus", // body
-		[]string{},             // actions
+		[]string{},                // actions
 		map[string]dbus.Variant{}, // hints
-		int32(5000),            // expire_timeout (5 seconds)
+		int32(5000),               // expire_timeout (5 seconds)
 	)
 	if call.Err != nil {
 		log.Printf("Note: Notification failed (service may not be available): %v", call.Err)
@@ -74,7 +74,7 @@ func SessionBusExample() {
 // SystemBusExample demonstrates connecting to and using the system bus
 func SystemBusExample() {
 	fmt.Println("=== System Bus Example ===")
-	
+
 	// Connect to system bus
 	conn, err := dbus.SystemBus()
 	if err != nil {
@@ -124,27 +124,27 @@ func SystemBusExample() {
 // ComparisonExample shows key differences in behavior
 func ComparisonExample() {
 	fmt.Println("=== Key Differences ===")
-	
+
 	fmt.Println("\n1. Scope:")
 	fmt.Println("   Session Bus: Per-user session (isolated)")
 	fmt.Println("   System Bus:  System-wide (shared across users)")
-	
+
 	fmt.Println("\n2. Lifetime:")
 	fmt.Println("   Session Bus: Login → Logout")
 	fmt.Println("   System Bus:  Boot → Shutdown")
-	
+
 	fmt.Println("\n3. Typical Services:")
 	fmt.Println("   Session Bus: Notifications, media players, desktop apps")
 	fmt.Println("   System Bus:  systemd, NetworkManager, UDisks2, BlueZ")
-	
+
 	fmt.Println("\n4. Security:")
 	fmt.Println("   Session Bus: Permissive within user session")
 	fmt.Println("   System Bus:  Strict policies, often requires privileges")
-	
+
 	fmt.Println("\n5. Use Cases:")
 	fmt.Println("   Session Bus: User applications, desktop integration")
 	fmt.Println("   System Bus:  System services, hardware management")
-	
+
 	// Check environment variables
 	fmt.Println("\n6. Environment:")
 	sessionAddr := os.Getenv("DBUS_SESSION_BUS_ADDRESS")
@@ -154,7 +154,7 @@ func ComparisonExample() {
 		fmt.Println("   Session bus address: (not set, using default)")
 	}
 	fmt.Println("   System bus socket: /var/run/dbus/system_bus_socket")
-	
+
 	fmt.Println()
 }
 
